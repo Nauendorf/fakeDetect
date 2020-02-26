@@ -5,8 +5,9 @@
     Count the ratio of bright pixels nearby the brightest to ensure we found the UV feature. 
 */
 
-#include "class.fakeDetect.cpp"
-
+#include "fakeDetect.h"
+#include "Configuration.h"
+#include "Passport.h"
 
 int main(int argc, char*argv[])
 {
