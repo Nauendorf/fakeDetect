@@ -12,7 +12,6 @@ using namespace std;
 
 Mat src_gray;
 int thresh = 100;
-RNG rng(12345);
 
 /// Function header
 void thresh_callback(int, void* );
@@ -59,7 +58,7 @@ void thresh_callback(int, void* )
 	Mat drawing = Mat::zeros( canny_output.size(), CV_8UC3 );
 	for( size_t i = 0; i< contours.size(); i++ )
 	{
-		Scalar color = Scalar( rng.uniform(0, 256), rng.uniform(0,256), rng.uniform(0,256) );
+		Scalar color = Scalar( 255, 0, 0 );
 		drawContours( drawing, contours, (int)i, color, 2, LINE_8, hierarchy, 0 );
 	}
 
