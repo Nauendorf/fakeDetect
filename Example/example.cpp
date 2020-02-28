@@ -19,16 +19,19 @@ void thresh_callback(int, void* );
 int main( int argc, char** argv )
 {
 	Mat src = imread("HappyID.jpg");
+	Mat test = src.clone();
+
 	if( src.empty() )
 	{
 		cout << "Could not open or find the image!\n" << endl;
 		cout << "Usage: " << argv[0] << " <Input image>" << endl;
 		return -1;
 	}
-
+	
 	/// Convert image to gray and blur it
 	cvtColor( src, src_gray, COLOR_BGR2GRAY );
 	blur( src_gray, src_gray, Size(3,3) );
+	threshold(src, src, 100, 255 , CV_THRESH_BINARY);
 
 	/// Create Window
 	const char* source_window = "Source";
@@ -63,5 +66,5 @@ void thresh_callback(int, void* )
 	}
 
 	/// Show in a window
-	imshow( "Contours", drawing );
+	//imshow( "Contours", drawing );
 }
