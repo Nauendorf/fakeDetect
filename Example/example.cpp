@@ -2,6 +2,8 @@
 // https://docs.opencv.org/3.4/df/d0d/tutorial_find_contours.html
 // https://github.com/opencv/opencv/tree/3.4/samples/cpp/tutorial_code/ShapeDescriptors
 
+// Compile: g++ -g example.cpp -o FakeIDDetector `pkg-config --cflags --libs opencv` -std=c++17
+
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
