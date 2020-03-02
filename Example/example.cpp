@@ -18,9 +18,9 @@ int thresh = 100;
 /// Function header
 void thresh_callback(int, void* );
 
-int main( int argc, char** argv )
+int main( int argc, char* argv[] )
 {
-	Mat src = imread("HappyID.jpg");
+	Mat src = imread(argv[1]);
 	Mat test = src.clone();
 
 	if( src.empty() )
@@ -33,7 +33,11 @@ int main( int argc, char** argv )
 	/// Convert image to gray and blur it
 	cvtColor( src, src_gray, COLOR_BGR2GRAY );
 	blur( src_gray, src_gray, Size(3,3) );
-	threshold(src, src, 100, 255 , CV_THRESH_BINARY);
+
+	// FIDDLE: the 60 number (lower more, higher less)
+	threshold(src, src, 60, 255 , CV_THRESH_BINARY);
+
+	resize(src, src, cv::Size(src.cols/2,src.rows/2));
 
 	/// Create Window
 	const char* source_window = "Source";
@@ -67,6 +71,7 @@ void thresh_callback(int, void* )
 		drawContours( drawing, contours, (int)i, color, 2, LINE_8, hierarchy, 0 );
 	}
 
+	resize(drawing, drawing, cv::Size(drawing.cols/2,drawing.rows/2));
 	/// Show in a window
-	//imshow( "Contours", drawing );
+	imshow( "Contours", drawing );
 }
